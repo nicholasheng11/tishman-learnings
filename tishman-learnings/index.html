@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What I Learned at Tishman — Internship Summary</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="A private summary of concepts I learned during my internship at Tishman Capital Partners: Opportunity Zone funds, tax-loss harvesting, hedge funds, 1031 exchanges, real estate pro forma modeling, and a full-stack web project." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>" />
+<style>
+  :root{
+    --navy:#15171b;          /* near-black: headings, footer, dark UI */
+    --navy-soft:#2a2d34;
+    --accent:#c1121f;        /* PRIMARY red */
+    --accent-dark:#8c0d17;
+    --accent-soft:#fcebec;
+    --ink:#1c1e23;           /* body text (near-black) */
+    --muted:#5f6672;
+    --line:#e8e4dd;          /* warm light border */
+    --bg:#fbfaf7;            /* warm white */
+    --card:#ffffff;
+    --gold:#a87f1e;          /* accent gold */
+    --gold-soft:#fbf2d8;
+    --gold-line:#d9b25a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:16px;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* ---------- top nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--accent);
+    border-bottom:3px solid var(--gold);
+  }
+  .nav-inner{
+    max-width:1040px;margin:0 auto;padding:10px 20px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .nav-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.2px;white-space:nowrap;}
+  .nav-links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;}
+  .nav-links a{
+    color:rgba(255,255,255,.85);font-size:13px;padding:6px 10px;border-radius:7px;
+  }
+  .nav-links a:hover{background:rgba(255,255,255,.16);color:#fff;text-decoration:none;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:linear-gradient(160deg,var(--accent) 0%,var(--accent-dark) 100%);
+    color:#fff;padding:56px 20px 60px;
+    border-bottom:4px solid var(--gold);
+  }
+  .hero-inner{max-width:1040px;margin:0 auto;}
+  .hero .eyebrow{
+    text-transform:uppercase;letter-spacing:2px;font-size:12px;
+    color:#f5dd94;margin-bottom:14px;font-weight:700;
+  }
+  .hero h1{font-size:40px;line-height:1.15;margin:0 0 16px;font-weight:800;}
+  .hero p{font-size:18px;color:rgba(255,255,255,.93);max-width:680px;margin:0 0 8px;}
+  .hero .meta{color:#f5dd94;font-size:14px;margin-top:18px;}
+
+  /* ---------- layout ---------- */
+  main{max-width:1040px;margin:0 auto;padding:0 20px 80px;}
+  section{padding:46px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
+  .sec-num{
+    color:var(--gold);font-weight:800;font-size:14px;
+    letter-spacing:1px;text-transform:uppercase;
+  }
+  h2{font-size:28px;margin:0;color:var(--navy);font-weight:800;line-height:1.2;}
+  .lede{color:var(--muted);font-size:17px;margin:10px 0 26px;max-width:760px;}
+
+  h3{font-size:18px;color:var(--navy);margin:26px 0 8px;font-weight:700;}
+
+  /* ---------- cards / grids ---------- */
+  .grid{display:grid;gap:16px;}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;
+  }
+  .card h4{margin:0 0 6px;font-size:16px;color:var(--navy);font-weight:700;}
+  .card p{margin:0;color:var(--muted);font-size:14.5px;}
+
+  ul.clean{margin:10px 0 0;padding-left:20px;}
+  ul.clean li{margin:7px 0;}
+  ul.clean li b{color:var(--navy);}
+
+  /* key takeaway box */
+  .takeaway{
+    background:var(--accent-soft);border-left:4px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:14px 18px;margin:22px 0 0;
+  }
+  .takeaway b{color:var(--accent);}
+  .takeaway p{margin:0;font-size:15px;color:#5a2a2c;}
+
+  /* fill-in callout */
+  .fillin{
+    background:var(--gold-soft);border:1px dashed #d9b25a;border-radius:10px;
+    padding:14px 18px;margin:20px 0;
+  }
+  .fillin .tag{
+    display:inline-block;background:var(--gold);color:#fff;font-size:11px;
+    font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+    padding:2px 8px;border-radius:5px;margin-bottom:6px;
+  }
+  .fillin p{margin:6px 0 0;font-size:14.5px;color:#6a4d12;}
+  .fillin ul{margin:6px 0 0;padding-left:20px;color:#6a4d12;font-size:14.5px;}
+
+  /* glossary */
+  table.gloss{width:100%;border-collapse:collapse;margin-top:10px;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  table.gloss th,table.gloss td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14.5px;vertical-align:top;}
+  table.gloss th{background:var(--accent);color:#fff;font-weight:600;font-size:13px;letter-spacing:.3px;}
+  table.gloss td:first-child{font-weight:700;color:var(--navy);white-space:nowrap;width:1%;}
+  table.gloss tr:last-child td{border-bottom:none;}
+
+  /* project / tech chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .chip{
+    background:#f5f0e6;color:var(--navy);font-size:13px;font-weight:600;
+    padding:5px 11px;border-radius:20px;border:1px solid #e6dcc6;
+  }
+  .btn{
+    display:inline-block;background:var(--accent);color:#fff;font-weight:600;
+    padding:10px 18px;border-radius:8px;margin-top:16px;font-size:14.5px;
+  }
+  .btn:hover{background:var(--accent-dark);text-decoration:none;}
+
+  .disclaimer{
+    font-size:13px;color:var(--muted);font-style:italic;
+    background:#f3f1ec;border-radius:8px;padding:10px 14px;margin-top:18px;
+  }
+
+  footer{
+    background:var(--navy);color:#b8b2a7;text-align:center;
+    padding:30px 20px;font-size:13.5px;border-top:4px solid var(--gold);
+  }
+  footer a{color:var(--gold-line);}
+
+  @media (max-width:720px){
+    .hero h1{font-size:30px;}
+    .grid-2,.grid-3{grid-template-columns:1fr;}
+    .nav-brand{font-size:14px;}
+    h2{font-size:23px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">🏢 What I Learned at Tishman</span>
+    <nav class="nav-links">
+      <a href="#oz">OZ Funds</a>
+      <a href="#quantinno">Tax-Loss / Quantinno</a>
+      <a href="#qfaf">QFAF</a>
+      <a href="#exchange">1031 Exchange</a>
+      <a href="#proforma">Pro Forma</a>
+      <a href="#glossary">Key Terms</a>
+      <a href="#tennis">Web Project</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Private Internship Summary</div>
+    <h1>What I Learned at<br>Tishman</h1>
+    <p>A plain-English recap of the real estate finance, investing, and technical concepts I picked up during my internship at <b>Tishman Capital Partners (TCP)</b> — the firm's alternative-investments and LP platform — from Opportunity Zone funds to tax-loss harvesting to shipping a live web application.</p>
+    <div class="meta">Nicholas (Nico) Heng &nbsp;·&nbsp; Investment Analyst Intern, Tishman Capital Partners &nbsp;·&nbsp; May 26 – June 18, 2026</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ PRIVATE NOTE ============ -->
+  <div class="fillin" style="margin-top:32px;background:#f4f2ee;border-color:#cfc9bf;">
+    <span class="tag" style="background:var(--navy);">Private</span>
+    <p style="color:#3a3d44;"><b>This is an internal, link-only page.</b> It's set to <code>noindex</code> so search engines won't list it. It is not password-protected — anyone who has the exact link can open it, so treat the link as you would any internal document. The content here is kept at the <i>concept</i> level (no confidential TCP fund figures).</p>
+  </div>
+
+  <!-- ============ 1. OZ FUNDS ============ -->
+  <section id="oz">
+    <div class="sec-head">
+      <span class="sec-num">01 / Investing Vehicle</span>
+    </div>
+    <h2>Opportunity Zone (OZ) Funds &amp; Projects</h2>
+    <p class="lede">A Qualified Opportunity Fund invests capital into economically-distressed areas ("Opportunity Zones") in exchange for capital-gains tax incentives — one of the strategies TCP runs on the investments side. I worked on understanding the underlying real estate projects inside the fund and brainstorming uses for their space.</p>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>What an OZ fund is</h4>
+        <p>An investment vehicle that pools capital gains and deploys them into property/development in designated Opportunity Zones. In return, investors can defer and potentially reduce tax on those gains if they hold long enough.</p>
+      </div>
+      <div class="card">
+        <h4>The "90% Test"</h4>
+        <p>A Qualified Opportunity Fund generally must keep at least <b>90% of its assets</b> invested in qualifying Opportunity Zone property. It shapes what the fund can build or operate while keeping its tax benefits — so any new idea has to be OZ-compatible.</p>
+      </div>
+      <div class="card">
+        <h4>"Highest &amp; Best Use"</h4>
+        <p>The core question behind every site decision: of everything you could <i>legally and physically</i> put on a piece of land or space, which option earns the most relative to its cost and risk? A new idea has to beat the property's default use.</p>
+      </div>
+      <div class="card">
+        <h4>Two kinds of opportunity</h4>
+        <p><b>Alt-Use</b> = deciding what to <i>build</i> on vacant land (developer's job — more capital, zoning/permitting risk, longer timeline). <b>Empty Commercial</b> = deciding what <i>fills</i> an already-built vacant space (landlord's job — faster, cheaper, lower risk).</p>
+      </div>
+    </div>
+
+    <h3>A project I worked on</h3>
+    <p class="lede" style="margin-bottom:14px;">I was tasked with researching three of the fund's properties and brainstorming the best uses for their available space, then producing a ranked one-page recommendation with rough cost ranges and trade-offs.</p>
+    <div class="chips">
+      <span class="chip">Culdesac Tempe — Alt Use</span>
+      <span class="chip">Link Apartments NoDa 36th — Alt Use</span>
+      <span class="chip">Anthem House (MidCity, Huntsville) — Empty Commercial</span>
+    </div>
+
+    <div class="takeaway">
+      <p><b>What I took away:</b> A good recommendation isn't a brainstorm — it's about finding the <i>gap</i> (a use people clearly want but can't get nearby), checking it against zoning and the property's economics, and being honest about whether a cost figure is a sourced benchmark or a rough estimate. The lens that ran through everything: a use should out-earn the default option or speed up lease-up, not just "stimulate the area."</p>
+    </div>
+
+    <div class="fillin">
+      <span class="tag">Fill in</span>
+      <p><b>Decide how much project detail to include.</b> This section is deliberately kept at the <i>concept</i> level and omits the fund's internal financials (leasing %, rents, capital figures). Since this page is private/link-only you <i>can</i> add a few specifics — but remember the link isn't password-protected, so only add confidential figures if you're confident in who has it. You might also add: one sentence on the final recommendation you delivered, or a screenshot of your one-pager template.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2. QUANTINNO / TAX-LOSS ============ -->
+  <section id="quantinno">
+    <div class="sec-head">
+      <span class="sec-num">02 / Tax Strategy</span>
+    </div>
+    <h2>Tax-Loss Harvesting (Quantinno DEALS)</h2>
+    <p class="lede">Tax-loss harvesting is selling investments at a loss to bank a tax-deductible loss that offsets capital gains elsewhere — lowering your tax bill this year. Quantinno's DEALS platform is a leveraged long/short strategy built to manufacture those losses even in a rising market.</p>
+
+    <h3>The concept, elementary</h3>
+    <ul class="clean">
+      <li><b>It defers tax, it doesn't delete it.</b> When you sell a loser and rebuy something similar, your cost basis drops — so you'll owe a bigger gain later. You've pushed the tax into the future, not erased it.</li>
+      <li><b>Why deferral is still worth money:</b> (1) you keep and invest the deferred tax dollars in the meantime, and (2) you can harvest losses at the high short-term rate (~40.8%) and repay later at the low long-term rate (~23.8%) — a real rate arbitrage.</li>
+      <li><b>The wash-sale rule:</b> you can't rebuy the same/identical security within 30 days or the loss is disallowed — which is why these managers hold many individual stocks, not one fund.</li>
+      <li><b>"Boot" &amp; deferral</b> ideas carry over to the 1031 world too (see below).</li>
+    </ul>
+
+    <h3>What DEALS actually is</h3>
+    <ul class="clean">
+      <li><b>A leveraged long/short strategy</b> (e.g. "130/30" = $130 long and $30 short for every $100). The short positions are the trick — a loss on a short is a harvestable loss, so the strategy can generate losses <i>even when the market rises</i>, which plain long-only harvesting can't.</li>
+      <li><b>Three flavors:</b> <b>Core</b> (fund with cash/portfolio), <b>Overlay</b> (use existing holdings as collateral, no new cash), <b>Exchange</b> (slowly diversify out of one big low-basis position).</li>
+    </ul>
+
+    <div class="takeaway">
+      <p><b>What I took away — read the marketing critically:</b> A sales deck's "after-tax outperformance" number is mostly the <i>credited value of harvested losses</i>, not cash in your pocket. The benefit reverses on exit (an unwind tax bill), it only helps if you personally have big gains to offset, and leverage is real risk that gets framed as "more benefit." Every figure in a pitch deck is hypothetical/backtested — treat it as marketing, verify independently.</p>
+    </div>
+    <div class="disclaimer">Educational summary only — not investment, tax, or financial advice.</div>
+  </section>
+
+  <!-- ============ 3. QFAF ============ -->
+  <section id="qfaf">
+    <div class="sec-head">
+      <span class="sec-num">03 / Hedge Fund</span>
+    </div>
+    <h2>QFAF — Quantinno Fundamental Arbitrage Fund</h2>
+    <p class="lede">A genuinely different product from DEALS. Where DEALS is a tax strategy that happens to use long/short, QFAF is a <b>market-neutral long/short hedge fund</b> trying to earn an uncorrelated return — the tax angle is secondary.</p>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>"Market-neutral"</h4>
+        <p>Holds roughly equal long and short positions (~$2.50 long / $2.50 short per $1, ≈5x gross leverage) so net market exposure is ~zero. Designed to make money whether the market rises or falls — but it can still lose if the stock picks are wrong (it lost ~8.5% in 2020).</p>
+      </div>
+      <div class="card">
+        <h4>Where the return comes from</h4>
+        <p>A daily multi-factor model ranks ~1,500–2,000 large U.S. stocks (value, momentum, quality, behavioral biases), goes long the good and short the bad. Profit is the <i>spread</i> between longs and shorts — pure stock-picking, not market direction.</p>
+      </div>
+      <div class="card">
+        <h4>The real selling point</h4>
+        <p>Low/negative correlation (≈ −0.2 to −0.3) to stocks, bonds, and other hedge funds. Something that zigs when your other holdings zag is valuable even at a modest return — that diversification is worth more than the headline number.</p>
+      </div>
+      <div class="card">
+        <h4>Hedge fund, not "hedge-fund-like"</h4>
+        <p>Delaware LP, "2-and-20"-style fees (1.5% + 20% of profits), qualified/institutional investors only, leverage, short selling, prime brokers. Those are the defining features of a real hedge fund — all present.</p>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <p><b>What I took away — the plumbing &amp; the signals:</b> Reputable service providers (<b>KPMG</b> = Big-Four auditor that independently verifies the money is real; <b>HedgeServ</b> = independent fund administrator that strikes the official NAV; prime brokers like J.P. Morgan / Morgan Stanley) reduce the risk of being <i>defrauded</i> — but they say nothing about whether the strategy will make money. Don't let prestigious names do more persuasive work than they should.</p>
+    </div>
+    <div class="disclaimer">Educational summary only — not investment, tax, or financial advice.</div>
+  </section>
+
+  <!-- ============ 4. 1031 EXCHANGE ============ -->
+  <section id="exchange">
+    <div class="sec-head">
+      <span class="sec-num">04 / Tax Strategy</span>
+    </div>
+    <h2>1031 Exchanges (Background &amp; Q&amp;A)</h2>
+    <p class="lede">A 1031 exchange ("like-kind exchange," IRC §1031) lets a real estate investor sell an investment property and roll the proceeds into another one <b>without paying capital gains tax now</b> — the tax is deferred, not erased.</p>
+
+    <h3>The mechanics that matter</h3>
+    <ul class="clean">
+      <li><b>Real property only</b> (since the 2017 tax law) — no equipment or personal property.</li>
+      <li><b>"Like-kind" is broad:</b> almost any U.S. investment real estate is like-kind to any other (an apartment building swaps fine for raw land).</li>
+      <li><b>The two clocks:</b> <b>45 days</b> from the sale to formally <i>identify</i> the replacement property, and <b>180 days</b> to <i>close</i>. Miss either and the entire deferral collapses — full tax bill due. This is the central source of risk.</li>
+      <li><b>Qualified Intermediary (QI):</b> must hold the sale proceeds; if the seller touches the cash, the exchange is dead.</li>
+      <li><b>Boot:</b> any cash or non-like-kind value received is taxable. To fully defer, reinvest equal-or-greater value and replace the debt.</li>
+      <li><b>DSTs / TICs:</b> Delaware Statutory Trusts and tenant-in-common structures let investors buy <i>fractional</i> interests in larger properties as their replacement — useful when a firm assembles ready replacement property for investors racing the 45-day clock.</li>
+    </ul>
+
+    <div class="takeaway">
+      <p><b>The big insight ("swap till you drop"):</b> "Deferred" doesn't mean "paid later" — a savvy investor can structure it so the tax is <i>never</i> paid. Keep exchanging until death, and heirs inherit with a <b>stepped-up basis</b> (basis resets to market value) — the deferred gain evaporates. And the investor can pull tax-free cash out by <b>refinancing</b> (a loan isn't a taxable event), rather than selling. One precision point: a taxable sale also triggers <b>depreciation recapture</b> (taxed higher than regular gains), which 1031 defers too.</p>
+    </div>
+    <div class="disclaimer">§1031 survived the 2025 federal tax legislation intact, but it's a perennial legislative target. Educational summary only — not tax advice.</div>
+  </section>
+
+  <!-- ============ 5. PRO FORMA (FILL IN) ============ -->
+  <section id="proforma">
+    <div class="sec-head">
+      <span class="sec-num">05 / Technical Skill</span>
+    </div>
+    <h2>Real Estate Pro Forma Modeling</h2>
+    <p class="lede"><b>"The Real Estate Pro Forma Modeling Master Class"</b> — Justin Kivel · 17.5 hours · completed June 2026. A hands-on Udemy course on building dynamic real estate pro forma models in Excel from scratch — projecting a property's income, expenses, financing, and investor returns across a hold period.</p>
+
+    <div class="card" style="display:flex;align-items:center;gap:14px;background:#f7f3ec;border-color:#e6dcc6;margin-bottom:8px;">
+      <span style="font-size:26px;">🎓</span>
+      <p style="margin:0;color:var(--muted);font-size:14.5px;"><b style="color:var(--navy);">Certificate of completion</b> — Udemy, 17.5 total hours. Verify at <a href="https://ude.my/UC-5e57bc74-0761-4d89-82b2-3ac2e82f5790" target="_blank" rel="noopener">ude.my/UC-5e57bc74…</a></p>
+    </div>
+
+    <h3>What the course covered</h3>
+    <ul class="clean">
+      <li><b>Real estate finance fundamentals</b> — how income property is valued and the time-value-of-money math behind every model.</li>
+      <li><b>Building a pro forma from scratch</b> — modeling revenue (rents, other income, vacancy) and operating expenses up to <b>NOI</b>, the income engine of value.</li>
+      <li><b>Financing &amp; the debt schedule</b> — sizing a loan, amortization, and turning unlevered cash flow into <b>levered</b> cash flow to equity.</li>
+      <li><b>Investor returns</b> — calculating and reading <b>IRR</b>, <b>equity multiple</b>, <b>cash-on-cash</b>, cap rate, and yield-on-cost together.</li>
+      <li><b>Sensitivity &amp; scenario analysis</b> — stress-testing the assumptions (rent growth, exit cap, hold period) that swing a deal's returns most.</li>
+    </ul>
+
+    <h3>Core concepts at a glance</h3>
+    <div class="grid grid-3">
+      <div class="card"><h4>NOI</h4><p>Net Operating Income — rental + other income, minus operating expenses (before debt &amp; taxes). The engine of property value.</p></div>
+      <div class="card"><h4>Cap rate</h4><p>NOI ÷ property value. The market's "yield" on a building; lower cap rate = pricier/safer asset.</p></div>
+      <div class="card"><h4>Debt schedule</h4><p>Loan amount, rate, amortization, and interest/principal over time — turns unlevered cash flow into levered.</p></div>
+      <div class="card"><h4>Cash-on-cash (CoC)</h4><p>Annual pre-tax cash flow ÷ equity invested. "What I pocket each year."</p></div>
+      <div class="card"><h4>IRR &amp; equity multiple</h4><p>IRR is the time-weighted return; equity multiple / MOIC is total cash back ÷ cash in. Shown together.</p></div>
+      <div class="card"><h4>Exit / reversion</h4><p>Projected sale value (often exit-cap × stabilized NOI) — usually the largest single cash flow in the model.</p></div>
+    </div>
+
+    <div class="fillin">
+      <span class="tag">Fill in (optional)</span>
+      <p><b>Add your own takeaways.</b> In a sentence or two, what clicked most for you — e.g. how levered returns amplify both ways, why the exit cap rate dominates the IRR, or how this connected to the actual TCP deals you'd been looking at. A screenshot of a model you built (sanitized) would make this section stand out.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6. GLOSSARY ============ -->
+  <section id="glossary">
+    <div class="sec-head">
+      <span class="sec-num">06 / Reference</span>
+    </div>
+    <h2>Key Terms I Picked Up</h2>
+    <p class="lede">The vocabulary that came up across the real estate and finance work — kept short so it's easy to scan.</p>
+
+    <table class="gloss">
+      <tr><th>Term</th><th>What it means</th></tr>
+      <tr><td>ADR</td><td>Average Daily Rate — average price a hotel gets per <i>occupied</i> room per night.</td></tr>
+      <tr><td>RevPAR</td><td>Revenue Per Available Room = ADR × occupancy. Punishes empty rooms, so it shows whole-building performance.</td></tr>
+      <tr><td>Rent Esc.</td><td>Rent Escalation — built-in rent increases over a lease (commonly ~2–3%/yr).</td></tr>
+      <tr><td>MOIC</td><td>Multiple on Invested Capital — how many times you got your money back ($10M → $20M = 2.0x). Size of the win; ignores time.</td></tr>
+      <tr><td>CoC</td><td>Cash-on-Cash — yearly cash income ÷ cash invested ($80K/yr on $1M = 8%). What you pocket each year.</td></tr>
+      <tr><td>Gray-collar pocket</td><td>A geographic cluster of skilled technical workers (techs, defense maintenance, advanced manufacturing) — between blue- and white-collar.</td></tr>
+      <tr><td>Mezzanine</td><td>(1) Architectural: a partial floor between two main floors. (2) Finance: "mezz debt" sits between the senior loan and equity — fills a funding gap, pricier than the main loan.</td></tr>
+      <tr><td>LOI</td><td>Letter of Intent — a short, mostly non-binding outline of tentative deal terms before the real contract. Serious interest, not locked.</td></tr>
+      <tr><td>SCIF</td><td>Sensitive Compartmented Information Facility — a "spy-proof" room for classified work (soundproofed, signal-shielded, no personal electronics).</td></tr>
+      <tr><td>TI</td><td>Tenant Improvement — the cost to fit out the inside of an existing space for a tenant. (Contrast: ground-up construction cost.)</td></tr>
+      <tr><td>NNN</td><td>Triple-net lease — tenant pays rent plus property taxes, insurance, and maintenance.</td></tr>
+    </table>
+
+    <div class="fillin">
+      <span class="tag">Fill in (optional)</span>
+      <p><b>Add any terms I missed.</b> If your pro forma course or other meetings introduced terms not listed here (e.g. yield-on-cost, DSCR, waterfall, promote/carried interest, going-in vs. exit cap), add a row so this becomes your personal cheat-sheet.</p>
+    </div>
+  </section>
+
+  <!-- ============ 7. TENNIS / WEB PROJECT ============ -->
+  <section id="tennis">
+    <div class="sec-head">
+      <span class="sec-num">07 / Technical Project</span>
+    </div>
+    <h2>Full-Stack Web Project — Tennis Transfer Portal</h2>
+    <p class="lede">A project assigned by my supervisor: design and ship a live web application from scratch. I built a D1 men's tennis transfer-portal tracker — a searchable, sortable, filterable database of players entering the portal — and deployed it as a real, public website.</p>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>What it does</h4>
+        <p>Tracks transfer-portal players with their previous and new school, status (In Portal / Committed / Signed / Withdrawn), ITA team rankings on both schools, and point-in-time UTR. Users can search, filter by status and conference tier (Power 4 / Mid-Major), and sort by recency, ranking, or UTR.</p>
+      </div>
+      <div class="card">
+        <h4>How I built it</h4>
+        <p>A static site — single <code>index.html</code> with inline CSS/JS, a <code>transfers.js</code> data file, and a custom <code>add-player.html</code> tool (single / smart-paste / bulk modes) that parses transfer posts into clean entries. Deployed free via GitHub Pages on a custom domain.</p>
+      </div>
+    </div>
+
+    <h3>What I actually learned doing it</h3>
+    <ul class="clean">
+      <li><b>The Git/GitHub workflow</b> — cloning a repo, committing, pushing, and deploying with GitHub Pages.</li>
+      <li><b>Working with an AI coding agent</b> — how to write a tight, scoped prompt (list the files, specify exact values, set constraints, ask for a diff) so the work comes back right the first time, and when to chunk a task vs. do it in one pass.</li>
+      <li><b>Data modeling decisions</b> — e.g. storing a point-in-time UTR "snapshot" instead of trying to keep live ratings current, and labeling class year by the season just finished to match the source data.</li>
+      <li><b>Product judgment</b> — cutting features that don't earn their place (alphabetical sorts, redundant date lines) and resisting polish-on-polish in favor of validation: show it to a real user first.</li>
+      <li><b>Buying &amp; pointing a custom domain</b> at GitHub Pages (DNS A/CNAME records, HTTPS).</li>
+    </ul>
+
+    <div class="chips">
+      <span class="chip">HTML / CSS</span>
+      <span class="chip">Vanilla JavaScript</span>
+      <span class="chip">Git &amp; GitHub</span>
+      <span class="chip">GitHub Pages</span>
+      <span class="chip">Custom domain / DNS</span>
+      <span class="chip">AI-assisted coding</span>
+    </div>
+
+    <a class="btn" href="https://tennistransferportal.com" target="_blank" rel="noopener">View the live site →</a>
+
+    <div class="fillin">
+      <span class="tag">Fill in (optional)</span>
+      <p><b>Confirm the link and add a screenshot.</b> Double-check <code>tennistransferportal.com</code> is the right URL (you registered it; confirm it's live). A screenshot of the tracker here would make this section much stronger. Note: this was built on your personal GitHub account while at work — keep it framed as a learning project.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <p>A private learning summary from my internship at Tishman Capital Partners · Internal, link-only — please don't share beyond Tishman.<br>
+  Educational summaries only — not investment, tax, or financial advice.</p>
+</footer>
+
+</body>
+</html>
