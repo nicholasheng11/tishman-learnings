@@ -139,12 +139,18 @@
   .btn:hover{background:var(--accent-dark);text-decoration:none;}
 
   .reco{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:8px;}
-  .reco-row{display:flex;align-items:center;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);border-left:4px solid var(--accent);background:var(--card);flex-wrap:wrap;}
+  .reco-row{padding:16px 18px;border-bottom:1px solid var(--line);border-left:4px solid var(--accent);background:var(--card);}
   .reco-row:last-child{border-bottom:none;}
-  .reco-site{flex:0 0 210px;font-weight:700;color:var(--navy);font-size:15px;}
+  .reco-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:9px;}
+  .reco-site{flex:0 0 190px;font-weight:700;color:var(--navy);font-size:15px;}
   .reco-site span{display:block;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-top:3px;}
   .reco-pick{flex:1;min-width:200px;font-weight:700;color:var(--accent);font-size:16px;}
   .reco-pick em{font-style:normal;font-weight:500;color:var(--muted);font-size:13.5px;}
+  .reco-detail{list-style:none;margin:0;padding:0;}
+  .reco-detail li{font-size:13.5px;color:var(--ink);margin:5px 0;line-height:1.55;}
+  .reco-detail li b{color:var(--navy);}
+  .reco-detail li.reco-note{color:var(--muted);font-style:italic;}
+  .reco-detail li.reco-note b{color:var(--muted);}
 
   ul.keys{list-style:none;margin:0;padding:0;}
   ul.keys li{margin:9px 0;font-size:14px;color:var(--ink);line-height:1.7;}
@@ -247,27 +253,46 @@
     <p class="lede" style="margin-bottom:12px;">The lead recommendation I landed on for each site in the completed deliverable:</p>
     <div class="reco">
       <div class="reco-row">
-        <div class="reco-site">Culdesac Tempe<span>Alt Use · build</span></div>
-        <div class="reco-pick">Beer garden / food-truck yard</div>
+        <div class="reco-head">
+          <div class="reco-site">Culdesac Tempe<span>Alt Use · build</span></div>
+          <div class="reco-pick">Beer garden / food-truck yard</div>
+        </div>
+        <ul class="reco-detail">
+          <li><b>Why:</b> Aimed at the young/ASU crowd, makes real money, and drives visitor traffic to the on-site shops; fits the open-space brand.</li>
+          <li><b>Cost:</b> ~$75k-$150k for the recommended build (reuse the existing courtyard/plaza, food trucks bring their own kitchens, a simple container bar). Scales to ~$300k+ only if you add new paving, a premium bar, and full utilities.</li>
+          <li><b>Logistics:</b> Lease to an operator. Licensing is the key swing: a food-anchored AZ Series 12 license runs ~$2,100 in state fees the first year, then $585 to renew, plus City of Tempe fees, and requires 40% food (a natural fit here). A full Series 6 bar license is far pricier because Arizona caps bar licenses by county.</li>
+          <li class="reco-note"><b>Note:</b> Cost hinges on reusing existing hardscape; new paving pushes toward $300k+.</li>
+        </ul>
       </div>
       <div class="reco-row">
-        <div class="reco-site">Anthem House<span>Empty Commercial · 2nd floor</span></div>
-        <div class="reco-pick">Flex / coworking workspace <em>(optional secure/SCIF tier)</em></div>
+        <div class="reco-head">
+          <div class="reco-site">Anthem House<span>Empty Commercial · 2nd floor</span></div>
+          <div class="reco-pick">Flex / coworking workspace <em>(optional secure/SCIF tier)</em></div>
+        </div>
+        <ul class="reco-detail">
+          <li><b>Why:</b> Deep, well-paid demand from the Redstone + Cummings hybrid workforce who want somewhere quieter than a coffee shop or home, plus captive day-desk demand from the extended-stay travelers already in the building. Daytime use, ideal for a no-walk-in 2nd floor.</li>
+          <li><b>Cost:</b> Office fit-out ~$265-$300/sf (Southeast). Secure/SCIF suites cost far more and should only be added if a cleared tenant funds that buildout.</li>
+          <li><b>Logistics:</b> Two models: (a) lease to an established operator (Industrious/Regus-type), lower-touch and lower-risk but caps upside; or (b) owner-operate as a branded amenity open to residents and the public, more upside but the fund runs it.</li>
+          <li class="reco-note"><b>Note:</b> The operate-vs-lease choice drives who funds the fit-out and who carries operating risk. Kinship (Charlotte) is a useful owner-operated comp.</li>
+        </ul>
       </div>
       <div class="reco-row">
-        <div class="reco-site">Link NoDa 36th<span>Alt Use · build</span></div>
-        <div class="reco-pick">Container / modular wellness &amp; recovery studio</div>
+        <div class="reco-head">
+          <div class="reco-site">Link NoDa 36th<span>Alt Use · build</span></div>
+          <div class="reco-pick">Container / modular wellness &amp; recovery studio</div>
+        </div>
+        <ul class="reco-detail">
+          <li><b>Why:</b> Residents already turn out for free yoga and events, a clear sign of appetite. A standalone wellness building anchors lease-up and rides the greenway foot traffic.</li>
+          <li><b>Cost:</b> Container/modular build. Wellness is the plumbing-heavy case, so the saving versus conventional is real but modest.</li>
+          <li><b>Logistics:</b> Lease to an experienced wellness operator to run it once built. Faster to stand up than conventional; works as a standalone modular building on an available parcel.</li>
+          <li class="reco-note"><b>Note:</b> Leads on demonstrated demand (the yoga turnout), not on being the cheapest build.</li>
+        </ul>
       </div>
     </div>
 
 
     <div class="takeaway">
       <p><b>What I took away:</b> A good recommendation isn't a brainstorm. It's about finding the <i>gap</i> (a use people clearly want but can't get nearby), checking it against zoning and the property's economics, and being honest about whether a cost figure is a sourced benchmark or a rough estimate. The lens that ran through everything: a use should out-earn the default option or speed up lease-up, not just "stimulate the area."</p>
-    </div>
-
-    <div class="fillin">
-      <span class="tag">Fill in</span>
-      <p><b>Decide how much project detail to include.</b> This section is deliberately kept at the <i>concept</i> level and omits the fund's internal financials (leasing %, rents, capital figures). Since this page is private/link-only you <i>can</i> add a few specifics, but remember the link isn't password-protected, so only add confidential figures if you're confident in who has it. The final recommendation is summarized above; you could still add a screenshot of your one-pager template if you want.</p>
     </div>
   </section>
 
@@ -296,7 +321,6 @@
     <div class="takeaway">
       <p><b>What I took away, reading the marketing critically:</b> A sales deck's "after-tax outperformance" number is mostly the <i>credited value of harvested losses</i>, not cash in your pocket. The benefit reverses on exit (an unwind tax bill), it only helps if you personally have big gains to offset, and leverage is real risk that gets framed as "more benefit." Every figure in a pitch deck is hypothetical/backtested, so treat it as marketing and verify independently.</p>
     </div>
-    <div class="disclaimer">Educational summary only. Not investment, tax, or financial advice.</div>
   </section>
 
   <!-- ============ 3. QFAF ============ -->
@@ -329,7 +353,6 @@
     <div class="takeaway">
       <p><b>What I took away, on the plumbing &amp; the signals:</b> Reputable service providers (<b>KPMG</b> = Big-Four auditor that independently verifies the money is real; <b>HedgeServ</b> = independent fund administrator that strikes the official NAV; prime brokers like J.P. Morgan / Morgan Stanley) reduce the risk of being <i>defrauded</i>, but they say nothing about whether the strategy will make money. Don't let prestigious names do more persuasive work than they should.</p>
     </div>
-    <div class="disclaimer">Educational summary only. Not investment, tax, or financial advice.</div>
   </section>
 
   <!-- ============ 4. 1031 EXCHANGE ============ -->
@@ -347,13 +370,14 @@
       <li><b>The two clocks:</b> <b>45 days</b> from the sale to formally <i>identify</i> the replacement property, and <b>180 days</b> to <i>close</i>. Miss either and the entire deferral collapses, with the full tax bill due. This is the central source of risk.</li>
       <li><b>Qualified Intermediary (QI):</b> must hold the sale proceeds; if the seller touches the cash, the exchange is dead.</li>
       <li><b>Boot:</b> any cash or non-like-kind value received is taxable. To fully defer, reinvest equal-or-greater value and replace the debt.</li>
-      <li><b>DSTs and PILOT:</b> A Delaware Statutory Trust lets investors buy <i>fractional</i> interests in larger properties as their 1031 replacement, useful when a firm assembles ready replacement property for investors racing the 45-day clock. A PILOT (Payment In Lieu Of Taxes) is a negotiated arrangement where a project pays a set amount instead of standard property taxes, common on incentivized real estate deals.</li>
+      <li><b>DSTs:</b> Delaware Statutory Trusts let investors buy <i>fractional</i> interests in larger properties as their 1031 replacement, useful when a firm assembles ready replacement property for investors racing the 45-day clock.</li>
+      <li><b>PILOT:</b> Payment In Lieu Of Taxes, a negotiated arrangement where a project pays a set amount instead of standard property taxes. Separate from 1031, but a common tool on incentivized real estate deals.</li>
     </ul>
 
     <div class="takeaway">
       <p><b>The big insight ("swap till you drop"):</b> "Deferred" doesn't mean "paid later." A savvy investor can structure it so the tax is <i>never</i> paid. Keep exchanging until death, and heirs inherit with a <b>stepped-up basis</b> (basis resets to market value), and the deferred gain evaporates. And the investor can pull tax-free cash out by <b>refinancing</b> (a loan isn't a taxable event), rather than selling. One precision point: a taxable sale also triggers <b>depreciation recapture</b> (taxed higher than regular gains), which 1031 defers too.</p>
     </div>
-    <div class="disclaimer">§1031 survived the 2025 federal tax legislation intact, but it's a perennial legislative target. Educational summary only. Not tax advice.</div>
+    <div class="disclaimer">§1031 survived the 2025 federal tax legislation intact, but it's a perennial legislative target.</div>
   </section>
 
   <!-- ============ 5. PRO FORMA (FILL IN) ============ -->
@@ -470,7 +494,7 @@
       <span class="sec-num">07 / Technical Project</span>
     </div>
     <h2>Full-Stack Web Project: Tennis Transfer Portal</h2>
-    <p class="lede">A project assigned by my supervisor: design and ship a live web application from scratch. I built a D1 men's tennis transfer-portal tracker, a searchable, sortable, filterable database of players entering the portal, and deployed it as a real, public website.</p>
+    <p class="lede">A project assigned by my supervisors Chris and Katie: design and ship a live web application from scratch. I built a D1 men's tennis transfer-portal tracker, a searchable, sortable, filterable database of players entering the portal, and deployed it as a real, public website.</p>
 
     <div class="grid grid-2">
       <div class="card">
@@ -518,8 +542,7 @@
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <p>A private learning summary from my internship at Tishman Capital Partners · Internal, link-only, please don't share beyond Tishman.<br>
-  Educational summaries only. Not investment, tax, or financial advice.</p>
+  <p>A private learning summary from my internship at Tishman Capital Partners · Internal, link-only, please don't share beyond Tishman.</p>
 </footer>
 
 </body>
