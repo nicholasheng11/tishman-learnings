@@ -9,19 +9,19 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>" />
 <style>
   :root{
-    --navy:#15171b;          /* near-black: headings, footer, dark UI */
-    --navy-soft:#2a2d34;
-    --accent:#c1121f;        /* PRIMARY red */
-    --accent-dark:#8c0d17;
-    --accent-soft:#fcebec;
-    --ink:#1c1e23;           /* body text (near-black) */
+    --navy:#1a1c20;          /* near-black: headings, text, footer */
+    --navy-soft:#2c2f36;
+    --accent:#d62e22;        /* Tishman red (primary) */
+    --accent-dark:#a81f17;
+    --accent-soft:#fdeceb;
+    --ink:#1f2228;
     --muted:#5f6672;
-    --line:#e8e4dd;          /* warm light border */
-    --bg:#fbfaf7;            /* warm white */
+    --line:#ece4dd;          /* warm hairline */
+    --bg:#faf6f3;            /* warm white */
     --card:#ffffff;
-    --gold:#a87f1e;          /* accent gold */
-    --gold-soft:#fbf2d8;
-    --gold-line:#d9b25a;
+    --gold:#d62e22;          /* legacy var, repointed to red (no gold) */
+    --gold-soft:#fdeceb;
+    --gold-line:#d62e22;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -39,34 +39,34 @@
   /* ---------- top nav ---------- */
   header.nav{
     position:sticky;top:0;z-index:50;
-    background:var(--accent);
-    border-bottom:3px solid var(--gold);
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 1px 0 rgba(0,0,0,.02);
   }
   .nav-inner{
     max-width:1040px;margin:0 auto;padding:10px 20px;
     display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   }
-  .nav-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.2px;white-space:nowrap;}
+  .nav-brand{color:var(--navy);font-weight:800;font-size:15px;letter-spacing:.3px;white-space:nowrap;}
   .nav-links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;}
   .nav-links a{
-    color:rgba(255,255,255,.85);font-size:13px;padding:6px 10px;border-radius:7px;
+    color:var(--muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;padding:6px 9px;border-radius:6px;
   }
-  .nav-links a:hover{background:rgba(255,255,255,.16);color:#fff;text-decoration:none;}
+  .nav-links a:hover{color:var(--accent);text-decoration:none;}
 
   /* ---------- hero ---------- */
   .hero{
     background:linear-gradient(160deg,var(--accent) 0%,var(--accent-dark) 100%);
     color:#fff;padding:56px 20px 60px;
-    border-bottom:4px solid var(--gold);
   }
   .hero-inner{max-width:1040px;margin:0 auto;}
   .hero .eyebrow{
     text-transform:uppercase;letter-spacing:2px;font-size:12px;
-    color:#f5dd94;margin-bottom:14px;font-weight:700;
+    color:rgba(255,255,255,.85);margin-bottom:14px;font-weight:700;
   }
   .hero h1{font-size:40px;line-height:1.15;margin:0 0 16px;font-weight:800;}
   .hero p{font-size:18px;color:rgba(255,255,255,.93);max-width:680px;margin:0 0 8px;}
-  .hero .meta{color:#f5dd94;font-size:14px;margin-top:18px;}
+  .hero .meta{color:rgba(255,255,255,.82);font-size:14px;margin-top:18px;}
 
   /* ---------- layout ---------- */
   main{max-width:1040px;margin:0 auto;padding:0 20px 80px;}
@@ -74,7 +74,7 @@
   section:last-of-type{border-bottom:none;}
   .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
   .sec-num{
-    color:var(--gold);font-weight:800;font-size:14px;
+    color:var(--accent);font-weight:800;font-size:14px;
     letter-spacing:1px;text-transform:uppercase;
   }
   h2{font-size:28px;margin:0;color:var(--navy);font-weight:800;line-height:1.2;}
@@ -107,16 +107,16 @@
 
   /* fill-in callout */
   .fillin{
-    background:var(--gold-soft);border:1px dashed #d9b25a;border-radius:10px;
+    background:#f5efe8;border:1px dashed #cdc4b8;border-radius:10px;
     padding:14px 18px;margin:20px 0;
   }
   .fillin .tag{
-    display:inline-block;background:var(--gold);color:#fff;font-size:11px;
+    display:inline-block;background:var(--accent);color:#fff;font-size:11px;
     font-weight:700;letter-spacing:.5px;text-transform:uppercase;
     padding:2px 8px;border-radius:5px;margin-bottom:6px;
   }
-  .fillin p{margin:6px 0 0;font-size:14.5px;color:#6a4d12;}
-  .fillin ul{margin:6px 0 0;padding-left:20px;color:#6a4d12;font-size:14.5px;}
+  .fillin p{margin:6px 0 0;font-size:14.5px;color:var(--muted);}
+  .fillin ul{margin:6px 0 0;padding-left:20px;color:var(--muted);font-size:14.5px;}
 
   /* glossary */
   table.gloss{width:100%;border-collapse:collapse;margin-top:10px;background:var(--card);
@@ -133,17 +133,18 @@
     padding:5px 11px;border-radius:20px;border:1px solid #e6dcc6;
   }
   .btn{
-    display:inline-block;background:var(--accent);color:#fff;font-weight:600;
-    padding:10px 18px;border-radius:8px;margin-top:16px;font-size:14.5px;
+    display:inline-block;background:#fff;color:var(--accent);font-weight:700;
+    padding:11px 22px;border:2px solid var(--accent);border-radius:4px;margin-top:16px;
+    font-size:13px;text-transform:uppercase;letter-spacing:1px;transition:all .15s ease;
   }
-  .btn:hover{background:var(--accent-dark);text-decoration:none;}
+  .btn:hover{background:var(--accent);color:#fff;text-decoration:none;}
 
   .reco{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:8px;}
   .reco-row{padding:16px 18px;border-bottom:1px solid var(--line);border-left:4px solid var(--accent);background:var(--card);}
   .reco-row:last-child{border-bottom:none;}
   .reco-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:9px;}
   .reco-site{flex:0 0 190px;font-weight:700;color:var(--navy);font-size:15px;}
-  .reco-site span{display:block;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-top:3px;}
+  .reco-site span{display:block;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);margin-top:3px;}
   .reco-pick{flex:1;min-width:200px;font-weight:700;color:var(--accent);font-size:16px;}
   .reco-pick em{font-style:normal;font-weight:500;color:var(--muted);font-size:13.5px;}
   .reco-detail{list-style:none;margin:0;padding:0;}
@@ -167,9 +168,9 @@
 
   footer{
     background:var(--navy);color:#b8b2a7;text-align:center;
-    padding:30px 20px;font-size:13.5px;border-top:4px solid var(--gold);
+    padding:30px 20px;font-size:13.5px;border-top:4px solid var(--accent);
   }
-  footer a{color:var(--gold-line);}
+  footer a{color:#f0a59e;}
 
   @media (max-width:720px){
     .hero h1{font-size:30px;}
